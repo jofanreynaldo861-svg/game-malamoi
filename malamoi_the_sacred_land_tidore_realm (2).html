@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Malamoi: The Sacred Land & Tidore Realm (Edisi Spesial)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold-primary: #f59e0b;
+            --emerald-sacred: #059669;
+            --teal-ocean: #0d9488;
+            --purple-reputation: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            touch-action: manipulation;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Papua Traditional Pattern Overlay */
+        .papua-overlay {
+            background-image: 
+                radial-gradient(rgba(13, 148, 136, 0.15) 2px, transparent 0),
+                radial-gradient(rgba(245, 158, 11, 0.1) 2px, transparent 0);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+
+        .location-node {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s;
+        }
+        .location-node:hover, .location-node:active {
+            transform: translate(-50%, -50%) scale(1.12);
+            filter: drop-shadow(0 8px 20px rgba(13, 148, 136, 0.7));
+        }
+
+        /* Tutorial Spotlight Ring */
+        #tutorial-spotlight-box {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            border: 3px solid #f59e0b;
+            border-radius: 1rem;
+            box-shadow: 0 0 0 9999px rgba(2, 6, 23, 0.85), 0 0 30px 8px rgba(245, 158, 11, 0.75);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.15); }
+        }
+        .animate-bounce-arrow {
+            animation: bounceArrow 1.2s infinite ease-in-out;
+        }
+
+        /* Dice Animations */
+        @keyframes diceSpin {
+            0% { transform: rotate(0deg) scale(0.9); }
+            50% { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .dice-spinning {
+            animation: diceSpin 0.25s infinite linear;
+        }
+
+        @keyframes dicePop {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+        .dice-popped {
+            animation: dicePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Floating Pawn Animation */
+        @keyframes floatPawn {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .floating-pawn {
+            animation: floatPawn 2s ease-in-out infinite;
+        }
+
+        /* Pulsing Glow Effect */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.25); }
+            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.4); }
+        }
+        .glow-pulse {
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-gold {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.98));
+            border: 2px solid rgba(245, 158, 11, 0.85);
+        }
+
+        @keyframes cardPop {
+            0% { transform: scale(0.92) translateY(12px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .pop-card {
+            animation: cardPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .quiz-opt-btn {
+            transition: all 0.2s ease;
+        }
+        .quiz-opt-btn:hover:not(:disabled), .quiz-opt-btn:active:not(:disabled) {
+            transform: translateX(4px);
+            border-color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.18);
+        }
+
+        /* SVG Dash Flow */
+        .dash-flow {
+            stroke-dasharray: 6 6;
+            animation: dashMove 2s linear infinite;
+        }
+        @keyframes dashMove {
+            to { stroke-dashoffset: -12; }
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(245, 158, 11, 0.4);
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="w-screen h-screen bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden papua-overlay relative">
+
+    <!-- Canvas Background For Sacred Spores / Ambient Particles -->
+    <canvas id="ambient-canvas" class="absolute inset-0 z-0 pointer-events-none opacity-40"></canvas>
+
+    <script>
+        // Synthesized Web Audio API FX & Ambient Generator with Mobile Guard
+        const SoundFX = {
+            ctx: null,
+            ambientOsc: null,
+            isAmbientPlaying: false,
+            
+            init() {
+                if (!this.ctx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) {
+                        this.ctx = new AudioContextClass();
+                    }
+                }
+                if (this.ctx && this.ctx.state === 'suspended') {
+                    this.ctx.resume().catch(() => {});
+                }
+            },
+            playRollTick() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(300 + Math.random() * 200, this.ctx.currentTime);
+                    gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.06);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.06);
+                } catch(e){}
+            },
+            playRollFinal() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const now = this.ctx.currentTime;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(800, now + 0.18);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(now + 0.18);
+                } catch(e){}
+            },
+            playStep() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(420, this.ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(260, this.ctx.currentTime + 0.08);
+                    gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.08);
+                } catch(e){}
+            },
+            playCorrect() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const now = this.ctx.currentTime;
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const osc = this.ctx.createOscillator();
+                        const gain = this.ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + (idx * 0.07));
+                        gain.gain.setValueAtTime(0.2, now + (idx * 0.07));
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + (idx * 0.07) + 0.2);
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        osc.start(now + (idx * 0.07));
+                        osc.stop(now + (idx * 0.07) + 0.2);
+                    });
+                } catch(e){}
+            },
+            playWrong() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const now = this.ctx.currentTime;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(160, now + 0.12);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(now + 0.3);
+                } catch(e){}
+            },
+            playTrade() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const now = this.ctx.currentTime;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(580, now);
+                    osc.frequency.setValueAtTime(880, now + 0.08);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(now + 0.22);
+                } catch(e){}
+            },
+            playReward() {
+                this.init();
+                if (!this.ctx || this.ctx.state !== 'running') return;
+                try {
+                    const now = this.ctx.currentTime;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(554.37, now + 0.09);
+                    osc.frequency.setValueAtTime(659.25, now + 0.18);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(now + 0.4);
+                } catch(e){}
+            },
+            toggleAmbient() {
+                this.init();
+                if (!this.ctx) return false;
+                if (this.isAmbientPlaying) {
+                    if (this.ambientOsc) {
+                        try { this.ambientOsc.stop(); } catch(e){}
+                        this.ambientOsc = null;
+                    }
+                    this.isAmbientPlaying = false;
+                    return false;
+                } else {
+                    try {
+                        const osc = this.ctx.createOscillator();
+                        const gain = this.ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(110, this.ctx.currentTime);
+                        gain.gain.setValueAtTime(0.025, this.ctx.currentTime);
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        osc.start();
+                        this.ambientOsc = osc;
+                        this.isAmbientPlaying = true;
+                        return true;
+                    } catch(e){
+                        return false;
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Screen 0: Character/Klan Trait Selection & Intro -->
+    <div id="screen-intro" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950/95 p-3 sm:p-6 text-center transition-all duration-500 overflow-y-auto">
+        <div class="max-w-2xl w-full glass-panel p-5 sm:p-8 rounded-3xl border-2 border-emerald-500/40 shadow-2xl relative my-auto">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3">
+                <i class="fa-solid fa-tree"></i> BAB 1 • BUKU NUSANTARA PAPUA
+            </div>
+
+            <h1 class="text-xl sm:text-3xl md:text-4xl font-cinzel font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-amber-300 to-teal-400 mb-2">
+                MALAMOI: THE SACRED LAND & TIDORE REALM
+            </h1>
+            <p class="text-[10px] sm:text-xs font-bold tracking-widest text-amber-400 uppercase mb-5 font-cinzel">
+                SIMULASI STRATEGI KOSMOLOGI SUKU MOI, HUKUM SASI & DAGANG TIDORE
+            </p>
+
+            <!-- Klan Trait Selector -->
+            <div class="mb-5 text-left">
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 text-center">
+                    <i class="fa-solid fa-users-viewfinder text-amber-400 mr-1"></i> PILIH KARAKTERISTIK KLAN AWAL
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <button onclick="Game.selectTrait('forest')" id="trait-btn-forest" class="trait-card p-3 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 text-left transition-all hover:scale-[1.02] active:scale-95">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-emerald-300">Penjaga Tuk</span>
+                            <i class="fa-solid fa-tree text-emerald-400"></i>
+                        </div>
+                        <div class="text-[10px] text-slate-300 leading-tight">Bonus: +10 Reputasi Adat awal di Hutan Sakral.</div>
+                    </button>
+
+                    <button onclick="Game.selectTrait('sea')" id="trait-btn-sea" class="trait-card p-3 rounded-2xl border-2 border-slate-700 bg-slate-900/60 text-left transition-all hover:scale-[1.02] active:scale-95">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-cyan-300">Pelaut Sasi</span>
+                            <i class="fa-solid fa-water text-cyan-400"></i>
+                        </div>
+                        <div class="text-[10px] text-slate-300 leading-tight">Bonus: +1 Sagu & +1 Teripang ekstra di awal.</div>
+                    </button>
+
+                    <button onclick="Game.selectTrait('trade')" id="trait-btn-trade" class="trait-card p-3 rounded-2xl border-2 border-slate-700 bg-slate-900/60 text-left transition-all hover:scale-[1.02] active:scale-95">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-bold text-amber-300">Saudagar Biak</span>
+                            <i class="fa-solid fa-ship text-amber-400"></i>
+                        </div>
+                        <div class="text-[10px] text-slate-300 leading-tight">Bonus: Diskon Barter Kain Timur di Tidore (Hanya 1 Sagu + 1 Pala).</div>
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="Game.startFromIntro()" class="w-full py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-600 to-amber-500 hover:from-emerald-400 hover:to-amber-400 text-slate-950 font-black text-sm sm:text-base tracking-wider uppercase shadow-xl shadow-emerald-500/25 transition-all transform active:scale-95 flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-compass text-lg"></i> MULAI EKSPEDISI MALAMOI
+            </button>
+            
+            <div class="mt-3 text-[10px] sm:text-[11px] text-slate-400">Dapat dimainkan di HP, Tablet, dan Laptop • Responsive Layout</div>
+        </div>
+    </div>
+
+    <!-- HUD Header -->
+    <header id="top-hud" class="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-2.5 sm:px-6 py-1.5 sm:py-2 flex items-center justify-between z-30 shadow-lg">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-amber-500 border border-emerald-300 flex items-center justify-center text-slate-950 font-cinzel font-black text-xs sm:text-sm shadow">
+                    MOI
+                </div>
+                <div class="hidden md:block">
+                    <div class="text-xs font-cinzel font-bold text-emerald-300 tracking-wider">MALAMOI & TIDORE</div>
+                    <div id="hud-trait-name" class="text-[9px] text-amber-400 uppercase tracking-widest font-bold">Klan Penjaga Tuk</div>
+                </div>
+            </div>
+
+            <!-- Musim / Turns -->
+            <div id="hud-turns-box" class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 rounded-xl bg-slate-800/80 border border-slate-700">
+                <i class="fa-solid fa-hourglass-half text-amber-400 text-xs sm:text-sm"></i>
+                <div>
+                    <div class="text-[8px] sm:text-[9px] uppercase text-slate-400 font-bold leading-none">Musim</div>
+                    <div class="text-xs sm:text-sm font-bold text-white leading-none mt-0.5"><span id="val-turns">15</span>/15</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Parameters -->
+        <div class="flex items-center gap-1.5 sm:gap-3">
+            <!-- Kemakmuran -->
+            <div id="hud-prosperity-box" class="flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2.5 py-1 rounded-xl bg-slate-800/80 border border-emerald-500/30">
+                <i class="fa-solid fa-wheat-awn text-emerald-400 text-xs sm:text-sm"></i>
+                <div>
+                    <div class="text-[7px] sm:text-[8px] uppercase text-slate-400 font-bold leading-none">Kemakmuran</div>
+                    <div class="text-xs font-bold text-emerald-300"><span id="val-prosperity">50</span></div>
+                </div>
+            </div>
+
+            <!-- Reputasi Adat -->
+            <div id="hud-reputation-box" class="flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2.5 py-1 rounded-xl bg-slate-800/80 border border-purple-500/30">
+                <i class="fa-solid fa-crown text-purple-400 text-xs sm:text-sm"></i>
+                <div>
+                    <div class="text-[7px] sm:text-[8px] uppercase text-slate-400 font-bold leading-none">Reputasi</div>
+                    <div class="text-xs font-bold text-purple-300"><span id="val-reputation">50</span></div>
+                </div>
+            </div>
+
+            <!-- Kain Timur Pusaka -->
+            <div id="hud-kain-box" class="flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2.5 py-1 rounded-xl bg-slate-800/80 border border-amber-500/30">
+                <i class="fa-solid fa-scroll text-amber-400 text-xs sm:text-sm"></i>
+                <div>
+                    <div class="text-[7px] sm:text-[8px] uppercase text-slate-400 font-bold leading-none">Kain Timur</div>
+                    <div class="text-xs font-bold text-amber-300"><span id="val-kain">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Utility Buttons -->
+        <div class="flex items-center gap-1 sm:gap-2">
+            <button onclick="Game.toggleAudio()" id="btn-audio" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 transition-all" title="Toggle Suara">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+            <button onclick="Game.openPustakaDrawer()" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 flex items-center justify-center text-amber-300 transition-all" title="Pustaka Adat">
+                <i class="fa-solid fa-book-open text-xs"></i>
+            </button>
+            <button onclick="Tutorial.start()" id="btn-tutorial-trigger" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/50 flex items-center justify-center text-emerald-300 transition-all" title="Panduan Game">
+                <i class="fa-solid fa-circle-question text-xs"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub-HUD Inventory Bar -->
+    <div class="w-full bg-slate-900/70 border-b border-slate-800/80 px-2.5 sm:px-4 py-1 flex items-center justify-between text-[11px] sm:text-xs z-20">
+        <div class="flex items-center gap-2 sm:gap-4 overflow-x-auto">
+            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap"><i class="fa-solid fa-boxes-stacked text-teal-400 mr-1"></i> Hasil Alam:</span>
+            <div class="flex items-center gap-2 sm:gap-3 text-slate-200 whitespace-nowrap">
+                <span id="inv-sagu" class="flex items-center gap-1 text-amber-300 font-semibold"><i class="fa-solid fa-bowl-rice text-amber-400"></i> Sagu: 2</span>
+                <span id="inv-pala" class="flex items-center gap-1 text-orange-300 font-semibold"><i class="fa-solid fa-seedling text-orange-400"></i> Pala: 1</span>
+                <span id="inv-teripang" class="flex items-center gap-1 text-cyan-300 font-semibold"><i class="fa-solid fa-water text-cyan-400"></i> Teripang: 1</span>
+            </div>
+        </div>
+
+        <div id="hud-badge-count" class="text-[10px] sm:text-[11px] text-purple-300 font-bold flex items-center gap-1 cursor-pointer shrink-0 ml-1" onclick="Game.openAchievementsDrawer()">
+            <i class="fa-solid fa-award text-amber-400"></i> Lencana: <span id="val-badges-count">0/4</span>
+        </div>
+    </div>
+
+    <!-- Main Game Board Container -->
+    <main class="relative flex-1 w-full h-full overflow-hidden flex items-center justify-center p-1.5 sm:p-4 z-10">
+        <div id="board-viewport" class="relative w-full max-w-5xl h-full max-h-[580px] rounded-2xl sm:rounded-3xl bg-slate-900/60 border border-slate-800/80 shadow-2xl overflow-hidden flex items-center justify-center p-2 sm:p-4 transition-all glow-pulse">
+            
+            <!-- Dynamic SVG Connections Path -->
+            <svg id="board-connections" class="absolute inset-0 w-full h-full pointer-events-none z-0">
+                <defs>
+                    <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#059669" stop-opacity="0.8"/>
+                        <stop offset="50%" stop-color="#0d9488" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.8"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <!-- Map Location Nodes Container -->
+            <div id="nodes-container" class="relative w-full h-full z-10"></div>
+
+            <!-- Player Pawn Element -->
+            <div id="player-pawn" class="absolute z-20 pointer-events-none transition-all duration-500 ease-out flex flex-col items-center justify-center -translate-x-1/2 -translate-y-1/2" style="top: 0px; left: 0px;">
+                <div class="floating-pawn relative flex flex-col items-center">
+                    <div class="px-1.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[8px] sm:text-[9px] font-black uppercase shadow-lg mb-0.5 whitespace-nowrap border border-emerald-300">
+                        KLAN MOI
+                    </div>
+                    <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-400 to-amber-300 border-2 border-white shadow-xl shadow-emerald-500/50 flex items-center justify-center text-slate-950 font-black text-sm sm:text-lg">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <div class="w-5 h-1 bg-slate-950/70 rounded-full blur-xs mt-0.5"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Controller Bar -->
+    <footer class="w-full bg-slate-900/90 backdrop-blur-md border-t border-slate-800 p-2 sm:p-3 z-30 shadow-2xl flex items-center justify-between gap-2 sm:gap-3">
+        <!-- Active Mission Box -->
+        <div id="hud-mission-box" class="flex-1 max-w-sm glass-panel p-2 rounded-xl sm:rounded-2xl border border-slate-700/80 flex items-center gap-2 sm:gap-3">
+            <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400 shrink-0 text-xs sm:text-base">
+                <i class="fa-solid fa-compass"></i>
+            </div>
+            <div class="overflow-hidden">
+                <div class="text-[8px] sm:text-[9px] uppercase font-bold text-slate-400 tracking-wider">Misi Utama</div>
+                <div id="current-mission-text" class="text-[10px] sm:text-xs font-semibold text-slate-200 truncate">
+                    Bawa klanmu ke Kedaton Tidore dengan Kemakmuran & Reputasi tinggi!
+                </div>
+            </div>
+        </div>
+
+        <!-- Dice Controller Area -->
+        <div id="hud-dice-area" class="flex items-center gap-2 sm:gap-3">
+            <div id="dice-container" class="relative">
+                <button id="btn-roll-dice" onclick="Game.rollDice()" class="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-amber-500 hover:from-emerald-400 hover:to-amber-400 text-slate-950 font-black shadow-xl shadow-emerald-500/20 border-2 border-emerald-300 flex flex-col items-center justify-center transition-all transform active:scale-95 group">
+                    <span id="dice-icon" class="text-xl sm:text-3xl transition-transform"><i class="fa-solid fa-dice-d6"></i></span>
+                    <span class="text-[8px] sm:text-[10px] font-black tracking-wider uppercase mt-0.5">JELAJAH</span>
+                </button>
+            </div>
+
+            <div class="flex flex-col">
+                <span class="text-[8px] sm:text-[9px] uppercase text-slate-400 font-bold tracking-wider">Hasil Dadu</span>
+                <span id="dice-result-val" class="text-lg sm:text-2xl font-black text-emerald-400 font-cinzel">--</span>
+            </div>
+        </div>
+
+        <!-- Action / Pustaka Buttons -->
+        <div id="hud-cards-btn" class="flex items-center gap-1.5 sm:gap-2">
+            <button onclick="Game.openPustakaDrawer()" class="px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] sm:text-xs font-bold text-amber-300 flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-book-atlas text-amber-400"></i>
+                <span class="hidden sm:inline">Pustaka Adat</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Interactive Quiz / Dilemma Modal -->
+    <div id="modal-quiz" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="max-w-xl w-full glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-emerald-500/50 shadow-2xl pop-card relative max-h-[90vh] overflow-y-auto">
+            
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span id="quiz-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-emerald-400/40">
+                        <i class="fa-solid fa-feather mr-1"></i> DILEMA MALAMOI
+                    </span>
+                    <span id="quiz-location-name" class="text-[10px] sm:text-xs text-slate-400 font-semibold truncate">Hutan Sakral Tuk</span>
+                </div>
+                <div id="quiz-reward-badge" class="text-[10px] sm:text-xs font-bold text-amber-400 flex items-center gap-1">
+                    <i class="fa-solid fa-scale-balanced"></i> Evaluasi Adat
+                </div>
+            </div>
+
+            <h3 id="quiz-question-text" class="text-xs sm:text-base font-bold text-emerald-200 leading-snug mb-3">
+                Dalam kosmologi Suku Moi di Sorong, hutan dianggap bukan hanya sebagai sumber ekonomi melainkan...
+            </h3>
+
+            <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3"></div>
+
+            <div id="quiz-feedback-box" class="hidden bg-slate-900/90 p-3 sm:p-4 rounded-xl border border-slate-800 mb-3">
+                <div id="quiz-result-title" class="text-xs sm:text-sm font-black mb-1 flex items-center gap-1.5"></div>
+                <p id="quiz-explanation-text" class="text-[11px] sm:text-xs text-slate-300 leading-relaxed"></p>
+            </div>
+
+            <div class="flex justify-end">
+                <button id="btn-quiz-continue" onclick="Game.closeQuizModal()" class="hidden px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all items-center gap-2">
+                    LANJUTKAN EKSPEDISI <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade / Barter Special Modal -->
+    <div id="modal-trade" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="max-w-md w-full glass-panel p-5 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-amber-500/50 shadow-2xl pop-card relative">
+            <button onclick="Game.closeTradeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-3 pb-2 border-b border-slate-800">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 text-xl sm:text-2xl">
+                    <i class="fa-solid fa-handshake-simple"></i>
+                </div>
+                <div>
+                    <span class="text-[9px] font-bold uppercase tracking-wider text-amber-400">PASAR BARTER BIAK-TIDORE</span>
+                    <h3 id="trade-location-title" class="text-sm sm:text-base font-bold text-slate-100">Pelabuhan Gurabati</h3>
+                </div>
+            </div>
+
+            <p class="text-[11px] sm:text-xs text-slate-300 mb-3 bg-slate-900/80 p-2.5 sm:p-3 rounded-xl border border-slate-800">
+                Saudagar Kesultanan Tidore berminat menukar <strong class="text-amber-300">Kain Timur Pusaka</strong> bernilai tinggi dengan hasil alam klanmu!
+            </p>
+
+            <div class="space-y-2.5 mb-4">
+                <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+                    <div>
+                        <div class="text-xs font-bold text-amber-300">1x Kain Timur Pusaka</div>
+                        <div id="trade-kain-cost-desc" class="text-[10px] text-slate-400">Biaya: 2 Sagu + 1 Pala</div>
+                    </div>
+                    <button onclick="Game.executeTrade('kain1')" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase shadow transition-all shrink-0">
+                        TUKAR
+                    </button>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+                    <div>
+                        <div class="text-xs font-bold text-purple-300">+25 Reputasi Adat</div>
+                        <div class="text-[10px] text-slate-400">Biaya: 1 Teripang Laut</div>
+                    </div>
+                    <button onclick="Game.executeTrade('rep1')" class="px-3 py-1.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-slate-950 font-black text-xs uppercase shadow transition-all shrink-0">
+                        TUKAR
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="Game.closeTradeModal()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 uppercase tracking-wider">
+                SELESAI BARTER
+            </button>
+        </div>
+    </div>
+
+    <!-- Pustaka Adat / Encyclopedia Drawer Modal -->
+    <div id="modal-pustaka" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="max-w-xl w-full glass-panel p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-amber-500/40 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <div class="flex items-center justify-between pb-2.5 border-b border-slate-800 mb-3">
+                <div class="flex items-center gap-2 text-amber-300 font-cinzel font-bold text-base sm:text-lg">
+                    <i class="fa-solid fa-book-open"></i> Pustaka Adat Malamoi
+                </div>
+                <button onclick="Game.closePustakaDrawer()" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="overflow-y-auto pr-1 space-y-3 flex-1 text-xs text-slate-300 leading-relaxed">
+                <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-emerald-500/30">
+                    <h4 class="font-bold text-emerald-300 text-xs sm:text-sm mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-tree"></i> 1. Kosmologi Suku Moi (Tuk, Nee & Kladus)
+                    </h4>
+                    <p>Masyarakat Suku Moi di Sorong, Papua Barat Daya, memandang hutan (*Tuk*) bukan sekadar sumber komoditas, melainkan sebagai **Ibu yang memberi kehidupan**. Manusia bertindak sebagai *Kladus* (penjaga kelestarian) yang wajib menjaga keseimbangan antara alam dan pemenuhan kebutuhan hidup.</p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-teal-500/30">
+                    <h4 class="font-bold text-teal-300 text-xs sm:text-sm mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved"></i> 2. Sistem Hukum Sasi Tradisional
+                    </h4>
+                    <p>**Sasi** adalah larangan adat untuk memanen hasil darat atau laut tertentu dalam jangka waktu tertentu. Sasi bertujuan memberi waktu bagi biota ekosistem (seperti teripang, lobster, dan pohon buah) untuk beregenerasi secara alami demi keberlanjutan masa depan.</p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-amber-500/30">
+                    <h4 class="font-bold text-amber-300 text-xs sm:text-sm mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-scroll"></i> 3. Kedudukan Kain Timur Pusaka & Biak-Tidore
+                    </h4>
+                    <p>**Kain Timur** masuk ke wilayah Papua melalui jaringan perdagangan maritim suku Biak dan Kesultanan Tidore. Kain Timur memiliki nilai sakral tinggi sebagai simbol legitimasi sosial, sarana penyelesaian denda adat, serta mas kawin utama dalam struktur adat Suku Moi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements / Lencana Modal -->
+    <div id="modal-achievements" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="max-w-md w-full glass-panel p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-purple-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-2.5 border-b border-slate-800 mb-3">
+                <div class="flex items-center gap-2 text-purple-300 font-cinzel font-bold text-base sm:text-lg">
+                    <i class="fa-solid fa-award"></i> Lencana Adat Malamoi
+                </div>
+                <button onclick="Game.closeAchievementsDrawer()" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="achievements-list-box" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
+        </div>
+    </div>
+
+    <!-- End Game Modal -->
+    <div id="screen-gameover" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+        <div class="max-w-md w-full glass-panel p-6 sm:p-8 rounded-3xl border-2 border-emerald-500/50 shadow-2xl text-center relative overflow-hidden pop-card">
+            <div id="go-icon" class="text-4xl sm:text-6xl text-emerald-400 mb-2">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 id="go-title" class="text-xl sm:text-3xl font-cinzel font-black text-amber-300 mb-1">
+                EKSPEDISI SELESAI!
+            </h2>
+            <p id="go-subtitle" class="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase tracking-widest mb-4 sm:mb-6">
+                Pemimpin Klan Malamoi Berpengaruh
+            </p>
+
+            <div class="bg-slate-900/90 p-3.5 sm:p-4 rounded-2xl border border-slate-800 space-y-2 mb-5 text-xs">
+                <div class="flex justify-between text-slate-300">
+                    <span>Kemakmuran Klan:</span>
+                    <span id="go-prosperity" class="font-bold text-emerald-400">80 / 100</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                    <span>Reputasi Adat:</span>
+                    <span id="go-reputation" class="font-bold text-purple-400">85 / 100</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                    <span>Kain Timur Pusaka:</span>
+                    <span id="go-kain" class="font-bold text-amber-400">3 Pusaka</span>
+                </div>
+                <div class="pt-2 border-t border-slate-800 flex justify-between text-xs sm:text-sm font-bold text-amber-300">
+                    <span>SKOR AKHIR ADAT:</span>
+                    <span id="go-score" class="font-cinzel text-sm sm:text-base">3.850 PTS</span>
+                </div>
+            </div>
+
+            <button onclick="Game.restart()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-rotate-right"></i> MAIN LAGI
+            </button>
+        </div>
+    </div>
+
+    <!-- Tutorial Spotlight Overlay -->
+    <div id="tutorial-overlay" class="fixed inset-0 z-[9997] bg-slate-950/80 backdrop-blur-xs pointer-events-auto transition-all duration-300 hidden">
+        <div id="tutorial-spotlight-box"></div>
+
+        <div id="tutorial-arrow-pointer" class="fixed pointer-events-none z-[10001] flex flex-col items-center text-emerald-400 transition-all duration-300">
+            <span id="tutorial-arrow-icon" class="text-2xl sm:text-3xl animate-bounce-arrow drop-shadow-[0_0_12px_rgba(16,185,129,0.9)]">
+                <i class="fa-solid fa-circle-arrow-down"></i>
+            </span>
+        </div>
+
+        <div id="tutorial-card" class="fixed z-[10002] w-[94%] max-w-md glass-gold p-4 sm:p-5 rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-emerald-400/80 pop-card flex flex-col gap-2.5 transition-all duration-300 max-h-[82vh] overflow-y-auto">
+            <div class="flex items-center justify-between">
+                <span id="tut-step-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[9px] sm:text-[10px] font-black uppercase tracking-wider shadow">
+                    Langkah 1 dari 5
+                </span>
+                <button onclick="Tutorial.skip()" class="text-[11px] text-slate-400 hover:text-emerald-300 font-bold flex items-center gap-1 transition-all">
+                    <i class="fa-solid fa-forward-step"></i> Lewati
+                </button>
+            </div>
+            
+            <h4 id="tut-title" class="text-sm sm:text-base font-cinzel font-black text-emerald-200">Selamat Datang di Tanah Malamoi!</h4>
+            <p id="tut-desc" class="text-xs text-slate-100 leading-relaxed bg-slate-900/90 p-3 rounded-xl border border-slate-700/80 shadow-inner">
+                Pimpin klan Suku Moi menjelajahi wilayah Sorong hingga jejaring Kesultanan Tidore. Seimbangkan Kemakmuran, Reputasi Adat, dan koleksi Kain Timur!
+            </p>
+
+            <div class="flex items-center justify-between pt-2 border-t border-emerald-500/30">
+                <button id="tut-prev-btn" onclick="Tutorial.prev()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-30 border border-slate-700">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+                </button>
+                <button id="tut-next-btn" onclick="Tutorial.next()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-500 hover:from-emerald-400 hover:to-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/30 transition-all flex items-center gap-1.5">
+                    LANJUT <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Expanded Map Nodes Data
+        const NODES_DATA = [
+            { id: 0, name: "Kampung Moi (Klablim)", x: 12, y: 75, type: "start", icon: "fa-house-chimney-window", color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-400", npc: "Tete Adat" },
+            { id: 1, name: "Hutan Sakral (Tuk)", x: 26, y: 52, type: "sacred", icon: "fa-tree", color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-400", npc: "Penjaga" },
+            { id: 2, name: "Muara Sele (Dusun Sagu)", x: 42, y: 78, type: "sago", icon: "fa-bowl-rice", color: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-400", npc: "Penyagu" },
+            { id: 3, name: "Malaumkarta (Area Sasi)", x: 32, y: 28, type: "sasi", icon: "fa-shield-halved", color: "text-teal-400", bg: "bg-teal-500/20", border: "border-teal-400", npc: "Dewan Adat" },
+            { id: 4, name: "Selat Dampier", x: 52, y: 46, type: "sea", icon: "fa-water", color: "text-cyan-400", bg: "bg-cyan-500/20", border: "border-cyan-400" },
+            { id: 5, name: "Pulau Misool (Titik Dagang)", x: 68, y: 72, type: "trade", icon: "fa-boxes-packing", color: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-400", npc: "Saudagar" },
+            { id: 6, name: "Teluk Mayalibit", x: 58, y: 20, type: "nature", icon: "fa-fish", color: "text-blue-400", bg: "bg-blue-500/20", border: "border-blue-400" },
+            { id: 7, name: "Banda-Gamlama (Jalur Rempah)", x: 78, y: 42, type: "spice", icon: "fa-mortar-pestle", color: "text-orange-400", bg: "bg-orange-500/20", border: "border-orange-400" },
+            { id: 8, name: "Pelabuhan Gurabati", x: 88, y: 68, type: "port", icon: "fa-anchor", color: "text-purple-400", bg: "bg-purple-500/20", border: "border-purple-400" },
+            { id: 9, name: "Kedaton Tidore", x: 90, y: 22, type: "finish", icon: "fa-chess-king", color: "text-yellow-400", bg: "bg-yellow-500/30", border: "border-yellow-300", npc: "Utusan Sultan" }
+        ];
+
+        const MAP_PATHS = [
+            [0, 1], [0, 2],
+            [1, 3], [1, 4],
+            [2, 4], [2, 5],
+            [3, 6], [4, 5], [4, 6], [4, 7],
+            [5, 8], [6, 9], [7, 8], [7, 9], [8, 9],
+            [9, 0], [9, 1]
+        ];
+
+        // Expanded Quiz Bank (12 Detailed Questions for Rich Playability)
+        const QUIZ_BANK = [
+            {
+                question: "Di Hutan Sakral (Tuk), klanmu butuh kayu untuk membangun rumah adat. Namun lokasi tersebut dilindungi adat Suku Moi. Apa tindakanmu?",
+                options: [
+                    "A. Menebang pohon keramat secara sembunyi-sembunyi.",
+                    "B. Minta izin Tete Adat Moi & gunakan kayu sekunder di luar hutan sakral.",
+                    "C. Menjual kawasan hutan sakral kepada pedagang asing.",
+                    "D. Membakar hutan agar bisa dijadikan lahan pertanian."
+                ],
+                correct: 1,
+                explanation: "Dalam kosmologi Suku Moi, hutan (*Tuk*) dianggap sebagai Ibu yang memberi kehidupan. Mengambil hasil hutan harus atas izin customary adat tanpa merusak hutan sakral.",
+                impact: { prosperity: 15, reputation: 25, kain: 0, sago: 1 }
+            },
+            {
+                question: "Hukum Sasi Laut sedang diberlakukan di Pesisir Malaumkarta untuk teripang dan lobster. Pedagang menawarkan harga 3x lipat jika kamu memanen sekarang. Sikapmu?",
+                options: [
+                    "A. Membuka Sasi malam hari demi keuntungan besar klan.",
+                    "B. Menolak panen dan menjaga Sasi hingga ritual pembukaan adat tiba.",
+                    "C. Menyuapkan hasil laut ke Tete Adat agar Sasi dicabut.",
+                    "D. Membiarkan pedagang asing memanen sendiri di laut."
+                ],
+                correct: 1,
+                explanation: "Sasi adalah sistem konservasi tradisional di Papua & Maluku. Menjaga Sasi melatih kedisiplinan dan memberi kesempatan ekosistem pulih, sehingga reputasi adat klan meningkat pesat!",
+                impact: { prosperity: 10, reputation: 30, kain: 0, teripang: 1 }
+            },
+            {
+                question: "Utusan Sultan Tidore (Kapita) tiba di pelabuhan membawa Kain Timur bertuliskan motif bertuah. Ia meminta pasokan Sagu & Pala terbaik klanmu. Tindakanmu?",
+                options: [
+                    "A. Menukar pasokan Sagu & Pala terbaik demi mendapatkan Kain Timur Pusaka.",
+                    "B. Menolak berdagang karena takut pada pengaruh Kesultanan Tidore.",
+                    "C. Memalsukan kualitas Pala dengan biji busuk.",
+                    "D. Meminta pembayaran hanya dalam bentuk emas eropa."
+                ],
+                correct: 0,
+                explanation: "Jejaring dagang Biak-Tidore sangat menghormati pertukaran Pala & Sagu dengan Kain Timur. Kain Timur memiliki nilai sosial-budaya sakral sebagai simbol legitimasi dan mas kawin di Suku Moi.",
+                impact: { prosperity: 25, reputation: 20, kain: 1, pala: 0 }
+            },
+            {
+                question: "Mengapa Kain Timur memiliki kedudukan paling tinggi dalam hierarki adat Suku Moi di Sorong?",
+                options: [
+                    "A. Karena terbuat dari serat pohon sagu tempatan.",
+                    "B. Karena menjadi alat tukar sah, penyelesaian denda adat, dan pusaka bernilai sakral.",
+                    "C. Hanya pakaian biasa tanpa nilai spiritual.",
+                    "D. Merupakan barang impor modern dari pabrik eropa."
+                ],
+                correct: 1,
+                explanation: "Benar! Kain Timur yang masuk lewat jaringan dagang Tidore dan Biak menjadi barang pusaka (*kain sakral*) yang menentukan status, denda adat, dan perkawinan dalam klan Moi.",
+                impact: { prosperity: 20, reputation: 20, kain: 0 }
+            },
+            {
+                question: "Suku Moi menganggap kosmologi alam sebagai bagian integral dari diri manusia. Prinsip ini diwujudkan melalui istilah adat...",
+                options: [
+                    "A. Kladus (Manusia penjaga alam dan hutan)",
+                    "B. Sasi Laut tanpa aturan",
+                    "C. Eksploitasi hutan tanpa batas",
+                    "D. Perdagangan bebas tanpa denda adat"
+                ],
+                correct: 0,
+                explanation: "Masyarakat Suku Moi memegang prinsip 'Kladus'—manusia tidak memiliki alam secara serakah, melainkan bertindak sebagai penjaga (*steward*) kelestarian tanah dan air.",
+                impact: { prosperity: 15, reputation: 25, kain: 0 }
+            },
+            {
+                question: "Tujuan utama diterapkannya Hukum Sasi oleh masyarakat adat di Papua Barat Daya dan Tidore adalah...",
+                options: [
+                    "A. Menimbun pasokan pangan agar harga melambung tinggi.",
+                    "B. Menghentikan perdagangan dengan Kesultanan Tidore selamanya.",
+                    "C. Memberi waktu regenerasi bagi fauna/flora agar tidak punah akibat eksploitasi.",
+                    "D. Melarang orang luar masuk ke wilayah pedalaman."
+                ],
+                correct: 2,
+                explanation: "Hukum Sasi adalah wujud kecerdasan ekologis lokal yang melarang pengambilan hasil alam tertentu dalam kurun waktu tertentu demi keberlanjutan sumber daya.",
+                impact: { prosperity: 10, reputation: 25, kain: 0 }
+            },
+            {
+                question: "Masyarakat di Dusun Sagu Muara Sele sedang menghadapi ancaman banjir muara. Bagaimana tradisi adat Moi menjaga ekosistem dusun sagu?",
+                options: [
+                    "A. Menebang seluruh pohon sagu dan menggantinya dengan beton.",
+                    "B. Melestarikan vegetasi perairan muara dan mengambil sagu secukupnya.",
+                    "C. Mengeringkan muara sungai untuk jalur kendaraan.",
+                    "D. Menjual kawasan muara kepada pihak ketiga."
+                ],
+                correct: 1,
+                explanation: "Pohon sagu menjaga serapan air dan ekosistem rawa muara. Pengambilan sagu secara berkelanjutan menjamin ketahanan pangan sekaligus kelestarian air.",
+                impact: { prosperity: 20, reputation: 15, sago: 2 }
+            },
+            {
+                question: "Ketika klanmu berlayar melintasi Selat Dampier, ombak besar menghantam kapal. Apa tindakan komando berlayar tradisional Biak-Moi?",
+                options: [
+                    "A. Membuang seluruh hasil panen sagu dan pasrah.",
+                    "B. Menggunakan pengetahuan tanda-tanda alam dan navigasi bintang kuno.",
+                    "C. Merusak lambung perahu agar tenggelam lebih cepat.",
+                    "D. Memaksa berlayar lurus menembus badai tanpa perhitungan."
+                ],
+                correct: 1,
+                explanation: "Para pelaut nusantara menggunakan kearifan navigasi astronomi dan membaca arus maritim untuk berlayar dengan selamat di perairan kepulauan.",
+                impact: { prosperity: 15, reputation: 15, teripang: 1 }
+            },
+            {
+                question: "Di Pulau Misool, saudagar dari Tidore menawarkan perhiasan asing dengan menukar Kain Timur Pusaka milik klanmu. Sikapmu?",
+                options: [
+                    "A. Segera menukar Kain Timur tanpa memikirkan akibatnya.",
+                    "B. Mempertahankan Kain Timur karena merupakan benda pusaka sakral klan.",
+                    "C. Menjual Kain Timur kepada bajak laut.",
+                    "D. Menyembunyikan Kain Timur di laut agar hilang."
+                ],
+                correct: 1,
+                explanation: "Kain Timur Pusaka (*Kain Sakral*) tidak boleh dijual sembarangan demi perhiasan sepele karena mengandung simbol kehormatan dan silsilah keluarga klan.",
+                impact: { prosperity: 10, reputation: 25, kain: 0 }
+            },
+            {
+                question: "Apakah peran ritual 'Tutup Sasi' dalam pilar adat dan keberlanjutan lingkungan masyarakat pesisir Papua?",
+                options: [
+                    "A. Menandai dimulainya larangan panen bagi seluruh warga.",
+                    "B. Menandai dimulainya pemanenan teratur setelah biota laut cukup matang.",
+                    "C. Melarang warga makan hasil laut selamanya.",
+                    "D. Menghancurkan alat tangkap ikan tradisional."
+                ],
+                correct: 0,
+                explanation: "Ritual 'Tutup Sasi' memulainya periode perlindungan adat di mana kawasan dilindungi. Saat 'Buka Sasi' tiba kelak, masyarakat memanen bersama secara bijak.",
+                impact: { prosperity: 15, reputation: 20, teripang: 1 }
+            },
+            {
+                question: "Jalur Rempah Pala dari Banda ke Kedaton Tidore menghubungkan klan darat Papua dengan kesultanan maritim. Apa keuntungan jejaring ini?",
+                options: [
+                    "A. Mengisolasi Papua dari peradaban dunia.",
+                    "B. Membangun diplomasi, pertukaran komoditas unggulan, dan akulturasi budaya.",
+                    "C. Memicu perang antarsuku di sepanjang pesisir.",
+                    "D. Memusnahkan tanaman pala di pedalaman."
+                ],
+                correct: 1,
+                explanation: "Jaringan dagang maritim Tidore-Papua mempererat persaudaraan antar-wilayah (*Hongi & Koreri*) lewat pertukaran rempah, sagu, kain timur, dan alat besi.",
+                impact: { prosperity: 25, reputation: 15, pala: 1 }
+            },
+            {
+                question: "Dalam struktur adat Suku Moi, siapakah yang memegang otoritas tertinggi dalam penyelesaian sengketa tanah dan hutan?",
+                options: [
+                    "A. Pedagang asing yang baru datang.",
+                    "B. Tete Adat dan Dewan Adat Moi (*Kladus*).",
+                    "C. Siapa saja yang memiliki uang paling banyak.",
+                    "D. Nahkoda kapal asing."
+                ],
+                correct: 1,
+                explanation: "Tete Adat dan Dewan Lembaga Adat Moi memegang peranan kunci menjaga kepemilikan komunal Ulayat dan memutus masalah adat secara arif.",
+                impact: { prosperity: 10, reputation: 30 }
+            }
+        ];
+
+        const ACHIEVEMENTS_DATA = [
+            { id: "sasi_master", name: "Penjaga Hukum Sasi", desc: "Pertahankan Reputasi Adat hingga mencapai 80+", icon: "fa-shield-halved", unlocked: false },
+            { id: "kain_collector", name: "Penyimpan Pusaka", desc: "Kumpulkan minimal 2 Kain Timur Pusaka", icon: "fa-scroll", unlocked: false },
+            { id: "tidore_trader", name: "Saudagar Biak-Tidore", desc: "Lakukan barter hasil bumi di titik perdagangan", icon: "fa-handshake-simple", unlocked: false },
+            { id: "moi_steward", name: "Matahari Malamoi", desc: "Raih Kemakmuran Klan melebihi 85", icon: "fa-sun", unlocked: false }
+        ];
+
+        const DICE_ICONS = [
+            'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 
+            'fa-dice-four', 'fa-dice-five', 'fa-dice-six'
+        ];
+
+        const Game = {
+            state: {
+                turns: 15,
+                prosperity: 50,
+                reputation: 50,
+                kainTimur: 0,
+                sagu: 2,
+                pala: 1,
+                teripang: 1,
+                currentNode: 0,
+                isRolling: false,
+                soundEnabled: true,
+                selectedTrait: 'forest',
+                usedQuizIndices: [],
+                achievements: ACHIEVEMENTS_DATA
+            },
+
+            init() {
+                SoundFX.init();
+                this.initAmbientCanvas();
+                this.renderNodes();
+                this.renderConnections();
+                this.updatePawnPosition();
+                this.applyTraitBonuses();
+                this.updateHUD();
+
+                window.addEventListener('resize', () => {
+                    this.renderConnections();
+                    this.updatePawnPosition();
+                    if (!document.getElementById('tutorial-overlay').classList.contains('hidden')) {
+                        Tutorial.positionSpotlightAndArrow();
+                    }
+                });
+
+                // Attach touch listeners for WebAudio initialization on mobile
+                document.body.addEventListener('touchstart', () => SoundFX.init(), { once: true });
+            },
+
+            initAmbientCanvas() {
+                const canvas = document.getElementById('ambient-canvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = window.innerWidth;
+                let height = canvas.height = window.innerHeight;
+
+                const particles = Array.from({ length: 30 }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2 + 1,
+                    speedY: Math.random() * 0.4 + 0.1,
+                    opacity: Math.random() * 0.6 + 0.2
+                }));
+
+                function draw() {
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach(p => {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(245, 158, 11, ${p.opacity})`;
+                        ctx.fill();
+
+                        p.y -= p.speedY;
+                        if (p.y < 0) {
+                            p.y = height;
+                            p.x = Math.random() * width;
+                        }
+                    });
+                    requestAnimationFrame(draw);
+                }
+                draw();
+
+                window.addEventListener('resize', () => {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                });
+            },
+
+            selectTrait(trait) {
+                this.state.selectedTrait = trait;
+                document.querySelectorAll('.trait-card').forEach(c => {
+                    c.classList.remove('border-emerald-500', 'bg-emerald-500/10');
+                    c.classList.add('border-slate-700', 'bg-slate-900/60');
+                });
+
+                const selectedBtn = document.getElementById(`trait-btn-${trait}`);
+                if (selectedBtn) {
+                    selectedBtn.classList.remove('border-slate-700', 'bg-slate-900/60');
+                    selectedBtn.classList.add('border-emerald-500', 'bg-emerald-500/10');
+                }
+
+                const traitText = trait === 'forest' ? 'Klan Penjaga Tuk' : (trait === 'sea' ? 'Klan Pelaut Sasi' : 'Saudagar Biak-Tidore');
+                document.getElementById('hud-trait-name').innerText = traitText;
+            },
+
+            applyTraitBonuses() {
+                // Apply Clan Trait Bonuses
+                if (this.state.selectedTrait === 'sea') {
+                    this.state.sagu = 3;
+                    this.state.teripang = 2;
+                } else if (this.state.selectedTrait === 'forest') {
+                    this.state.reputation = 60;
+                } else if (this.state.selectedTrait === 'trade') {
+                    const desc = document.getElementById('trade-kain-cost-desc');
+                    if (desc) desc.innerText = "Biaya Khusus Saudagar: 1 Sagu + 1 Pala";
+                }
+            },
+
+            startFromIntro() {
+                SoundFX.init();
+                this.applyTraitBonuses();
+
+                document.getElementById('screen-intro').classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    document.getElementById('screen-intro').classList.add('hidden');
+                    Tutorial.start();
+                }, 400);
+
+                this.updateHUD();
+            },
+
+            renderNodes() {
+                const container = document.getElementById('nodes-container');
+                container.innerHTML = '';
+
+                NODES_DATA.forEach(node => {
+                    const el = document.createElement('div');
+                    el.id = `node-${node.id}`;
+                    el.className = `location-node absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer flex flex-col items-center group z-10`;
+                    el.style.left = `${node.x}%`;
+                    el.style.top = `${node.y}%`;
+                    el.onclick = () => this.onNodeClick(node.id);
+
+                    el.innerHTML = `
+                        ${node.npc ? `<div class="px-1.5 py-0.5 rounded-full bg-emerald-500/30 border border-emerald-400 text-emerald-300 text-[8px] sm:text-[9px] font-bold uppercase mb-0.5 shadow">${node.npc}</div>` : ''}
+                        <div class="w-8 h-8 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl sm:rounded-2xl ${node.bg} border-2 ${node.border} shadow-lg backdrop-blur-md flex items-center justify-center ${node.color} text-xs sm:text-lg transition-all">
+                            <i class="fa-solid ${node.icon}"></i>
+                        </div>
+                        <span class="mt-0.5 px-1.5 py-0.5 rounded-md sm:rounded-lg bg-slate-900/90 border border-slate-800 text-[8px] sm:text-[10px] font-bold text-slate-200 tracking-wide text-center whitespace-nowrap shadow-lg">
+                            ${node.name}
+                        </span>
+                    `;
+                    container.appendChild(el);
+                });
+            },
+
+            renderConnections() {
+                const svg = document.getElementById('board-connections');
+                if (!svg) return;
+                svg.innerHTML = '';
+
+                MAP_PATHS.forEach(([startId, endId]) => {
+                    const n1 = NODES_DATA.find(n => n.id === startId);
+                    const n2 = NODES_DATA.find(n => n.id === endId);
+                    if (n1 && n2) {
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', `${n1.x}%`);
+                        line.setAttribute('y1', `${n1.y}%`);
+                        line.setAttribute('x2', `${n2.x}%`);
+                        line.setAttribute('y2', `${n2.y}%`);
+                        line.setAttribute('stroke', 'url(#pathGradient)');
+                        line.setAttribute('stroke-width', '2.5');
+                        line.setAttribute('class', 'dash-flow');
+                        svg.appendChild(line);
+                    }
+                });
+            },
+
+            updatePawnPosition() {
+                const node = NODES_DATA.find(n => n.id === this.state.currentNode);
+                const pawn = document.getElementById('player-pawn');
+                if (node && pawn) {
+                    pawn.style.left = `${node.x}%`;
+                    pawn.style.top = `${node.y}%`;
+                }
+            },
+
+            rollDice() {
+                if (this.state.isRolling || this.state.turns <= 0) return;
+                this.state.isRolling = true;
+
+                const diceIconEl = document.getElementById('dice-icon');
+                const resultVal = document.getElementById('dice-result-val');
+
+                diceIconEl.classList.add('dice-spinning');
+                resultVal.innerText = "...";
+
+                let rollTicks = 0;
+                const maxTicks = 10;
+                const finalValue = Math.floor(Math.random() * 6) + 1;
+
+                const interval = setInterval(() => {
+                    rollTicks++;
+                    const tempFace = Math.floor(Math.random() * 6);
+                    diceIconEl.innerHTML = `<i class="fa-solid ${DICE_ICONS[tempFace]}"></i>`;
+                    SoundFX.playRollTick();
+
+                    if (rollTicks >= maxTicks) {
+                        clearInterval(interval);
+                        diceIconEl.classList.remove('dice-spinning');
+                        
+                        // Set Final Result
+                        diceIconEl.innerHTML = `<i class="fa-solid ${DICE_ICONS[finalValue - 1]}"></i>`;
+                        diceIconEl.classList.add('dice-popped');
+                        setTimeout(() => diceIconEl.classList.remove('dice-popped'), 400);
+
+                        resultVal.innerText = finalValue;
+                        SoundFX.playRollFinal();
+
+                        this.state.turns -= 1;
+                        this.updateHUD();
+
+                        this.movePlayerSteps(finalValue);
+                    }
+                }, 85);
+            },
+
+            movePlayerSteps(steps) {
+                let current = this.state.currentNode;
+                let stepCount = 0;
+                let lastVisited = null;
+
+                const stepInterval = setInterval(() => {
+                    const allNeighbors = MAP_PATHS
+                        .filter(([a, b]) => a === current || b === current)
+                        .map(([a, b]) => (a === current ? b : a));
+
+                    let forwardNeighbors = allNeighbors.filter(id => id > current && id !== lastVisited);
+                    let candidateNeighbors = forwardNeighbors.length > 0 
+                        ? forwardNeighbors 
+                        : allNeighbors.filter(id => id !== lastVisited);
+
+                    if (candidateNeighbors.length === 0) candidateNeighbors = allNeighbors;
+
+                    if (candidateNeighbors.length > 0 && stepCount < steps) {
+                        const nextNode = candidateNeighbors[Math.floor(Math.random() * candidateNeighbors.length)];
+                        lastVisited = current;
+                        current = nextNode;
+                        this.state.currentNode = current;
+                        this.updatePawnPosition();
+                        SoundFX.playStep();
+                        stepCount++;
+                    } else {
+                        clearInterval(stepInterval);
+                        this.state.isRolling = false;
+                        this.triggerLocationEvent(current);
+                    }
+                }, 380);
+            },
+
+            demoMovePawn() {
+                const pawn = document.getElementById('player-pawn');
+                if (!pawn) return;
+                
+                const targetNode = NODES_DATA[1];
+                pawn.style.left = `${targetNode.x}%`;
+                pawn.style.top = `${targetNode.y}%`;
+                SoundFX.playStep();
+
+                setTimeout(() => {
+                    const startNode = NODES_DATA[0];
+                    pawn.style.left = `${startNode.x}%`;
+                    pawn.style.top = `${startNode.y}%`;
+                }, 1000);
+            },
+
+            onNodeClick(nodeId) {
+                if (this.state.currentNode === nodeId && !this.state.isRolling) {
+                    this.triggerLocationEvent(nodeId);
+                }
+            },
+
+            triggerLocationEvent(nodeId) {
+                const node = NODES_DATA.find(n => n.id === nodeId);
+                if (!node) return;
+
+                if (node.type === "trade" || node.type === "port") {
+                    this.openTradeModal(node);
+                } else {
+                    this.launchQuizModal(node);
+                }
+            },
+
+            launchQuizModal(node) {
+                let availableIndices = QUIZ_BANK.map((_, i) => i).filter(i => !this.state.usedQuizIndices.includes(i));
+                if (availableIndices.length === 0) {
+                    this.state.usedQuizIndices = [];
+                    availableIndices = QUIZ_BANK.map((_, i) => i);
+                }
+                const quizIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+                this.state.usedQuizIndices.push(quizIndex);
+
+                const quizData = QUIZ_BANK[quizIndex];
+                this.currentActiveQuiz = quizData;
+
+                document.getElementById('quiz-location-name').innerText = node.name;
+                document.getElementById('quiz-question-text').innerText = quizData.question;
+
+                const optionsBox = document.getElementById('quiz-options-container');
+                optionsBox.innerHTML = '';
+                document.getElementById('quiz-feedback-box').classList.add('hidden');
+                document.getElementById('btn-quiz-continue').classList.add('hidden');
+
+                quizData.options.forEach((optText, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = `quiz-opt-btn w-full p-2.5 sm:p-3.5 rounded-xl bg-slate-900 hover:bg-emerald-500/10 border border-slate-700 text-xs font-semibold text-left text-slate-200 flex items-center gap-2.5 transition-all`;
+                    btn.onclick = () => this.handleQuizAnswer(idx, quizData.correct, btn);
+
+                    btn.innerHTML = `
+                        <span class="w-6 h-6 rounded-lg bg-slate-800 border border-slate-600 text-emerald-400 font-bold flex items-center justify-center shrink-0 text-xs">
+                            ${['A', 'B', 'C', 'D'][idx]}
+                        </span>
+                        <span class="flex-1">${optText}</span>
+                    `;
+                    optionsBox.appendChild(btn);
+                });
+
+                document.getElementById('modal-quiz').classList.remove('hidden');
+            },
+
+            handleQuizAnswer(selectedIdx, correctIdx, clickedBtn) {
+                const optionsBox = document.getElementById('quiz-options-container');
+                const allButtons = optionsBox.querySelectorAll('button');
+                allButtons.forEach(btn => btn.disabled = true);
+
+                const isCorrect = (selectedIdx === correctIdx);
+                const feedbackBox = document.getElementById('quiz-feedback-box');
+                const feedbackTitle = document.getElementById('quiz-result-title');
+                const feedbackExp = document.getElementById('quiz-explanation-text');
+
+                const impact = this.currentActiveQuiz.impact || { prosperity: 15, reputation: 20, kain: 0 };
+
+                if (isCorrect) {
+                    clickedBtn.classList.remove('bg-slate-900', 'border-slate-700');
+                    clickedBtn.classList.add('bg-emerald-600/30', 'border-emerald-400', 'text-emerald-200');
+                    
+                    feedbackTitle.className = "text-xs sm:text-sm font-black mb-1 flex items-center gap-1.5 text-emerald-400";
+                    feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-check text-base"></i> TEPAT! (+${impact.prosperity} Kemakmuran, +${impact.reputation} Reputasi)`;
+
+                    this.state.prosperity = Math.min(100, this.state.prosperity + impact.prosperity);
+                    this.state.reputation = Math.min(100, this.state.reputation + impact.reputation);
+                    this.state.kainTimur += (impact.kain || 0);
+                    this.state.sagu += (impact.sago || 0);
+                    this.state.teripang += (impact.teripang || 0);
+                    this.state.pala += (impact.pala || 0);
+                    SoundFX.playCorrect();
+                } else {
+                    clickedBtn.classList.remove('bg-slate-900', 'border-slate-700');
+                    clickedBtn.classList.add('bg-rose-600/30', 'border-rose-400', 'text-rose-200');
+
+                    allButtons[correctIdx].classList.remove('bg-slate-900', 'border-slate-700');
+                    allButtons[correctIdx].classList.add('bg-emerald-600/30', 'border-emerald-400', 'text-emerald-200');
+
+                    feedbackTitle.className = "text-xs sm:text-sm font-black mb-1 flex items-center gap-1.5 text-rose-400";
+                    feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-base"></i> KURANG TEPAT (-10 Reputasi Adat)`;
+
+                    this.state.reputation = Math.max(0, this.state.reputation - 10);
+                    SoundFX.playWrong();
+                }
+
+                feedbackExp.innerText = this.currentActiveQuiz.explanation;
+                feedbackBox.classList.remove('hidden');
+
+                const btnContinue = document.getElementById('btn-quiz-continue');
+                btnContinue.classList.remove('hidden');
+                btnContinue.classList.add('flex');
+
+                this.checkAchievements();
+                this.updateHUD();
+            },
+
+            closeQuizModal() {
+                document.getElementById('modal-quiz').classList.add('hidden');
+
+                const currentN = NODES_DATA.find(n => n.id === this.state.currentNode);
+                if (currentN && currentN.type === "finish") {
+                    if (this.state.prosperity >= 70 && this.state.reputation >= 70) {
+                        this.showVictoryScreen();
+                        return;
+                    }
+                }
+                this.checkGameOverCondition();
+            },
+
+            openTradeModal(node) {
+                document.getElementById('trade-location-title').innerText = node.name;
+                document.getElementById('modal-trade').classList.remove('hidden');
+            },
+
+            closeTradeModal() {
+                document.getElementById('modal-trade').classList.add('hidden');
+                this.checkGameOverCondition();
+            },
+
+            executeTrade(type) {
+                if (type === 'kain1') {
+                    let reqSagu = 2;
+                    let reqPala = 1;
+                    if (this.state.selectedTrait === 'trade') reqSagu = 1;
+
+                    if (this.state.sagu >= reqSagu && this.state.pala >= reqPala) {
+                        this.state.sagu -= reqSagu;
+                        this.state.pala -= reqPala;
+                        this.state.kainTimur += 1;
+                        SoundFX.playTrade();
+                        this.unlockAchievement('tidore_trader');
+                        this.showToast("Berhasil Barter Kain Timur Pusaka!");
+                    } else {
+                        this.showToast("Bahan barter kurang! Butuh Sagu & Pala.");
+                    }
+                } else if (type === 'rep1') {
+                    if (this.state.teripang >= 1) {
+                        this.state.teripang -= 1;
+                        this.state.reputation = Math.min(100, this.state.reputation + 25);
+                        SoundFX.playTrade();
+                        this.showToast("Barter Teripang! Reputasi Adat +25!");
+                    } else {
+                        this.showToast("Teripang tidak cukup!");
+                    }
+                }
+                this.checkAchievements();
+                this.updateHUD();
+            },
+
+            showToast(msg) {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-full shadow-2xl pop-card';
+                toast.innerText = msg;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            },
+
+            openPustakaDrawer() {
+                document.getElementById('modal-pustaka').classList.remove('hidden');
+            },
+
+            closePustakaDrawer() {
+                document.getElementById('modal-pustaka').classList.add('hidden');
+            },
+
+            openAchievementsDrawer() {
+                const box = document.getElementById('achievements-list-box');
+                box.innerHTML = '';
+
+                this.state.achievements.forEach(ach => {
+                    const el = document.createElement('div');
+                    el.className = `p-2.5 rounded-xl border ${ach.unlocked ? 'bg-purple-500/20 border-purple-400' : 'bg-slate-900 border-slate-800 opacity-60'} flex items-center gap-2.5`;
+                    el.innerHTML = `
+                        <div class="w-8 h-8 rounded-lg ${ach.unlocked ? 'bg-purple-500 text-slate-950' : 'bg-slate-800 text-slate-500'} flex items-center justify-center text-sm font-bold shrink-0">
+                            <i class="fa-solid ${ach.icon}"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-slate-100">${ach.name}</div>
+                            <div class="text-[10px] text-slate-400">${ach.desc}</div>
+                        </div>
+                    `;
+                    box.appendChild(el);
+                });
+
+                document.getElementById('modal-achievements').classList.remove('hidden');
+            },
+
+            closeAchievementsDrawer() {
+                document.getElementById('modal-achievements').classList.add('hidden');
+            },
+
+            unlockAchievement(id) {
+                const ach = this.state.achievements.find(a => a.id === id);
+                if (ach && !ach.unlocked) {
+                    ach.unlocked = true;
+                    SoundFX.playReward();
+                }
+            },
+
+            checkAchievements() {
+                if (this.state.reputation >= 80) this.unlockAchievement('sasi_master');
+                if (this.state.kainTimur >= 2) this.unlockAchievement('kain_collector');
+                if (this.state.prosperity >= 85) this.unlockAchievement('moi_steward');
+            },
+
+            updateHUD() {
+                document.getElementById('val-turns').innerText = this.state.turns;
+                document.getElementById('val-prosperity').innerText = this.state.prosperity;
+                document.getElementById('val-reputation').innerText = this.state.reputation;
+                document.getElementById('val-kain').innerText = this.state.kainTimur;
+
+                document.getElementById('inv-sagu').innerHTML = `<i class="fa-solid fa-bowl-rice text-amber-400"></i> Sagu: ${this.state.sagu}`;
+                document.getElementById('inv-pala').innerHTML = `<i class="fa-solid fa-seedling text-orange-400"></i> Pala: ${this.state.pala}`;
+                document.getElementById('inv-teripang').innerHTML = `<i class="fa-solid fa-water text-cyan-400"></i> Teripang: ${this.state.teripang}`;
+
+                const unlockedCount = this.state.achievements.filter(a => a.unlocked).length;
+                document.getElementById('val-badges-count').innerText = `${unlockedCount}/4`;
+
+                const turnsBox = document.getElementById('hud-turns-box');
+                if (this.state.turns <= 3) {
+                    turnsBox.classList.add('border-rose-500', 'animate-pulse');
+                } else {
+                    turnsBox.classList.remove('border-rose-500', 'animate-pulse');
+                }
+            },
+
+            checkGameOverCondition() {
+                if (this.state.turns <= 0) {
+                    if (this.state.prosperity >= 70 && this.state.reputation >= 70) {
+                        this.showVictoryScreen();
+                    } else {
+                        this.showDefeatScreen();
+                    }
+                }
+            },
+
+            showVictoryScreen() {
+                const unlockedCount = this.state.achievements.filter(a => a.unlocked).length;
+                const totalScore = (this.state.prosperity * 20) + (this.state.reputation * 25) + (this.state.kainTimur * 300) + (unlockedCount * 250);
+                document.getElementById('go-icon').innerHTML = `<i class="fa-solid fa-crown text-amber-400"></i>`;
+                document.getElementById('go-title').innerText = "EKSPEDISI BERHASIL!";
+                document.getElementById('go-subtitle').innerText = "Pemimpin Klan Suku Moi Berpengaruh";
+                document.getElementById('go-prosperity').innerText = `${this.state.prosperity} / 100`;
+                document.getElementById('go-reputation').innerText = `${this.state.reputation} / 100`;
+                document.getElementById('go-kain').innerText = `${this.state.kainTimur} Pusaka`;
+                document.getElementById('go-score').innerText = `${totalScore.toLocaleString('id-ID')} PTS`;
+
+                document.getElementById('screen-gameover').classList.remove('hidden');
+                SoundFX.playReward();
+            },
+
+            showDefeatScreen() {
+                document.getElementById('go-icon').innerHTML = `<i class="fa-solid fa-hourglass-end text-rose-400"></i>`;
+                document.getElementById('go-title').innerText = "MUSIM HABIS";
+                document.getElementById('go-subtitle').innerText = "Klan Belum Mencapai Syarat Adat";
+                document.getElementById('go-score').innerText = "COBA LAGI";
+                document.getElementById('screen-gameover').classList.remove('hidden');
+            },
+
+            restart() {
+                this.state.turns = 15;
+                this.state.prosperity = 50;
+                this.state.reputation = 50;
+                this.state.kainTimur = 0;
+                this.state.sagu = 2;
+                this.state.pala = 1;
+                this.state.teripang = 1;
+                this.state.currentNode = 0;
+                this.state.usedQuizIndices = [];
+                this.state.achievements.forEach(a => a.unlocked = false);
+                
+                this.applyTraitBonuses();
+                document.getElementById('screen-gameover').classList.add('hidden');
+                this.updatePawnPosition();
+                this.updateHUD();
+            },
+
+            toggleAudio() {
+                const isPlaying = SoundFX.toggleAmbient();
+                document.getElementById('btn-audio').innerHTML = isPlaying ? 
+                    `<i class="fa-solid fa-volume-high text-xs text-emerald-400"></i>` : `<i class="fa-solid fa-volume-xmark text-xs text-rose-400"></i>`;
+            }
+        };
+
+        const Tutorial = {
+            currentStep: 0,
+            steps: [
+                {
+                    title: "Langkah 1: Tanah Malamoi & Tidore",
+                    desc: "Game ini mengevaluasi Kosmologi Suku Moi, Sistem Sasi, dan Perdagangan Kain Timur Biak-Tidore!",
+                    target: "board-viewport"
+                },
+                {
+                    title: "Langkah 2: Jelajah Wilayah",
+                    desc: "Tekan tombol 'JELAJAH' untuk mengocok dadu dan melangkah menyusuri kampung Moi hingga Tidore.",
+                    target: "btn-roll-dice"
+                },
+                {
+                    title: "Langkah 3: Pergerakan Bidak Klan",
+                    desc: "Bidak klanmu melangkah secara otomatis sesuai hasil kocokan dadu.",
+                    target: "player-pawn",
+                    actionDemo: true
+                },
+                {
+                    title: "Langkah 4: Dilema Adat & Barter",
+                    desc: "Tiap titik menghadirkan kuis evaluasi atau pasar barter hasil alam (Sagu, Pala, Teripang) dengan Kain Timur!",
+                    target: "node-1"
+                },
+                {
+                    title: "Langkah 5: Pantau Indikator Klan",
+                    desc: "Jaga Kemakmuran Klan dan Reputasi Adat tetap tinggi sebelum batas Musim berakhir!",
+                    target: "hud-prosperity-box"
+                }
+            ],
+
+            start() {
+                this.currentStep = 0;
+                document.getElementById('tutorial-overlay').classList.remove('hidden');
+                this.renderStep();
+            },
+
+            renderStep() {
+                const step = this.steps[this.currentStep];
+                
+                document.getElementById('tut-step-badge').innerText = `Langkah ${this.currentStep + 1} dari ${this.steps.length}`;
+                document.getElementById('tut-title').innerText = step.title;
+                document.getElementById('tut-desc').innerText = step.desc;
+
+                this.positionSpotlightAndArrow();
+
+                const prevBtn = document.getElementById('tut-prev-btn');
+                prevBtn.disabled = (this.currentStep === 0);
+
+                const nextBtn = document.getElementById('tut-next-btn');
+                if (this.currentStep === this.steps.length - 1) {
+                    nextBtn.innerHTML = `MULAI GAME <i class="fa-solid fa-play ml-1"></i>`;
+                } else {
+                    nextBtn.innerHTML = `LANJUT <i class="fa-solid fa-arrow-right ml-1"></i>`;
+                }
+
+                if (step.actionDemo) {
+                    Game.demoMovePawn();
+                }
+
+                SoundFX.playStep();
+            },
+
+            positionSpotlightAndArrow() {
+                const step = this.steps[this.currentStep];
+                const targetEl = document.getElementById(step.target);
+                const spotlightBox = document.getElementById('tutorial-spotlight-box');
+                const pointer = document.getElementById('tutorial-arrow-pointer');
+                const tutCard = document.getElementById('tutorial-card');
+
+                if (!targetEl || !spotlightBox || !pointer || !tutCard) return;
+
+                const rect = targetEl.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+
+                const padding = 6;
+                spotlightBox.style.left = `${Math.max(4, rect.left - padding)}px`;
+                spotlightBox.style.top = `${Math.max(4, rect.top - padding)}px`;
+                spotlightBox.style.width = `${Math.min(windowWidth - 8, rect.width + (padding * 2))}px`;
+                spotlightBox.style.height = `${Math.min(windowHeight - 8, rect.height + (padding * 2))}px`;
+                spotlightBox.style.display = 'block';
+
+                const pointerX = Math.min(windowWidth - 20, Math.max(20, rect.left + (rect.width / 2)));
+                let pointerY = rect.top - 42;
+
+                if (pointerY < 10) {
+                    pointerY = rect.bottom + 8;
+                    document.getElementById('tutorial-arrow-icon').classList.add('rotate-180');
+                } else {
+                    document.getElementById('tutorial-arrow-icon').classList.remove('rotate-180');
+                }
+
+                pointer.style.left = `${pointerX}px`;
+                pointer.style.top = `${pointerY}px`;
+                pointer.style.transform = `translateX(-50%)`;
+                pointer.style.display = 'flex';
+
+                if (rect.top < windowHeight / 2) {
+                    tutCard.style.top = 'auto';
+                    tutCard.style.bottom = '1rem';
+                } else {
+                    tutCard.style.top = '1rem';
+                    tutCard.style.bottom = 'auto';
+                }
+                tutCard.style.left = '50%';
+                tutCard.style.transform = 'translateX(-50%)';
+            },
+
+            next() {
+                if (this.currentStep < this.steps.length - 1) {
+                    this.currentStep++;
+                    this.renderStep();
+                } else {
+                    this.skip();
+                }
+            },
+
+            prev() {
+                if (this.currentStep > 0) {
+                    this.currentStep--;
+                    this.renderStep();
+                }
+            },
+
+            skip() {
+                document.getElementById('tutorial-overlay').classList.add('hidden');
+                document.getElementById('tutorial-spotlight-box').style.display = 'none';
+                document.getElementById('tutorial-arrow-pointer').style.display = 'none';
+            }
+        };
+
+        window.onload = function() {
+            Game.init();
+        };
+    </script>
+</body>
+</html>
